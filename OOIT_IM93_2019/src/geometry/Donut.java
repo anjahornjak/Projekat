@@ -1,5 +1,8 @@
 package geometry;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Donut extends Circle {
 	
 	//obelezja
@@ -22,7 +25,42 @@ public class Donut extends Circle {
 		this.innerR = innerR; 
 	}
 	
+	public Donut(Point center, int r, int innerR, boolean selected, Color color) {
+	 	this(center, r, innerR, selected);
+	 	this.color = color;
+	}
+	    
+	public Donut (Point center, int r, int innerR , Color color) {
+	 	this(center, r, innerR);
+	 	this.color = color;
+	}
+	    
+	public Donut (Point center, int radius, int innerR , Color color, Color innercolor) {
+	  	this(center, radius, innerR,color);
+	  	this.innercolor = innercolor;
+	}
+	    
+	public Donut(Point center, int radius, int innerR, boolean selected, Color color, Color innercolor) {
+	  	this(center, radius, innerR, selected, color);
+	  	this.innercolor = innercolor;
+	}
+
+	
+	//metode
+	
+	
+	
 	//overrajdi
+	
+	@Override
+	public boolean contains(int x, int y) {
+		return super.contains(x, y) && super.getCenter().distance(x,y) >= innerR; 
+	}
+	
+	@Override
+	public boolean contains(Point p) {
+		return this.contains(p.getX(), p.getY()); 
+	}
 	
 	@Override
 	public double area() {
@@ -49,6 +87,36 @@ public class Donut extends Circle {
 		}
 		return false;
 	}
+	
+	@Override
+	public void draw(Graphics g) {
+		super.draw(g);
+		g.setColor(getColor());
+		g.drawOval(super.center.getX()-innerR, super.center.getY()-innerR,
+				innerR*2, innerR*2);
+		if (isSelected()) {
+        g.drawRect(this.getCenter().getX() - innerR - 2,this.getCenter().getY() - 2, 4, 4);
+        g.drawRect(this.getCenter().getX() + innerR - 2,this.getCenter().getY() - 2, 4, 4);
+        g.drawRect(this.getCenter().getX() - 2,this.getCenter().getY() - innerR - 2, 4, 4);
+        g.drawRect(this.getCenter().getX() - 2,this.getCenter().getY() + innerR - 2, 4, 4);
+		}
+	}
+	
+    public void fill(Graphics g) {
+    	g.setColor(getInnerColor());
+    	super.fill(g);
+    	g.setColor(Color.WHITE);
+    	g.fillOval(this.getCenter().getX() - this.getInnerR() + 1, this.getCenter().getY() - this.getInnerR() + 1, this.getInnerR()*2 - 1, this.getInnerR()*2 - 1);
+    }
+  
+	@Override
+	public int compareTo(Object o) {
+		if (o instanceof Donut) {
+		return (int)(this.area() - ((Donut)o).area());
+		}
+		return 0;
+	}
+	
 	
 	//geteri i seteri
 
