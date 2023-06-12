@@ -48,7 +48,7 @@ public class Circle extends ShapeForInnerC {
 	}
 	
 	public boolean contains(int x, int y) {
-		return center.distance(x, y) >= r;
+		return center.distance(x, y) <= r;
 	}
 	
 	public boolean contains(Point p) {

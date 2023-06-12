@@ -55,6 +55,7 @@ public class DlgCircle extends JDialog {
 	 */
 	public DlgCircle() {
 		setBounds(100, 100, 450, 300);
+		setModal(true);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 255, 128));
 		contentPanel.setBorder(new LineBorder(new Color(249, 249, 0), 1, true));

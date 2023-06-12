@@ -61,11 +61,11 @@ public class PnlDrawing extends JPanel {
 				shape.setSelected(false);
 				if (shape.contains(click.getX(), click.getY()))
 					selectedShape = shape;
-
 			}
 
-			if (selectedShape != null)
-				selectedShape.setSelected(true);
+			if (selectedShape != null) {
+				selectedShape.setSelected(true);				
+			}
 
 		} else if (frame.getTglbtnPoint().isSelected()) {
 

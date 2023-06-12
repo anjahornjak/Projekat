@@ -167,7 +167,7 @@ public class DlgRectangle extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					Color outerClr = JColorChooser.showDialog(null, "Choose outer color", btnOuterClr.getBackground());
 					if (outerClr != null)
-						btnInnerClr.setBackground(outerClr);
+						btnOuterClr.setBackground(outerClr);
 				}
 			});
 			btnOuterClr.setFont(new Font("Yu Gothic UI", Font.PLAIN, 15));

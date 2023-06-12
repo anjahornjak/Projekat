@@ -88,6 +88,7 @@ public class FrmDrawing extends JFrame {
 		btnGroup.add(tglbtnCircle);
 		btnGroup.add(tglbtnDonut);
 		btnGroup.add(tglbtnRectangle);
+		btnGroup.add(tglbtnSelection);
 
 		JPanel pnlSouth = new JPanel();
 		contentPane.add(pnlSouth, BorderLayout.SOUTH);

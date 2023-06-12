@@ -55,6 +55,7 @@ public class DlgLine extends JDialog {
 	 */
 	public DlgLine() {
 		setBounds(100, 100, 382, 445);
+		setModal(true);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setForeground(new Color(255, 128, 128));
 		contentPanel.setBackground(new Color(255, 255, 128));
